@@ -52,16 +52,6 @@ public class CurrencyCnt {
         System.out.println("1000원" + d + "개");
         while (true) {
 
-            if (amount - 1000 >= 0) {
-                amount -= 1000;
-                d += 1;
-            } else {
-                break;
-            }
-        }
-        System.out.println("1000원" + d + "개");
-        while (true) {
-
             if (amount - 500 >= 0) {
                 amount -= 500;
                 e += 1;
@@ -102,6 +92,6 @@ public class CurrencyCnt {
                 break;
             }
         }
-        System.out.println("50원" + h + "개");
+        System.out.println("10원" + h + "개");
     }
 }
