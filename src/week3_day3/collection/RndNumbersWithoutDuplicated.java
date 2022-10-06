@@ -10,6 +10,9 @@ public class RndNumbersWithoutDuplicated {
 
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
+        for (int i = 0; i < 10; i++) {
+            int generate = randomNumberGenerator.generate(10);
+        }
         for (int i = 0; i < 50; i++) {
             setA.add(randomNumberGenerator.generate(50));
         }
