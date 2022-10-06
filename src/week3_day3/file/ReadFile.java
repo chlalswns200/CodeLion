@@ -26,10 +26,24 @@ public class ReadFile {
         return ' ';
     }
 
+    String readNBtye(int num) throws IOException {
+        BufferedReader br = new BufferedReader(
+                new FileReader(filename),
+                16 * 1024
+        );
+
+        String line;
+        while ((line = br.readLine()) != null) {
+            return line.substring(0, num);
+        }
+        return " ";
+    }
+
     public static void main(String[] args) throws IOException {
         ReadFile readFile = new ReadFile("a_file.txt");
-        char c = readFile.readOneBtye();
+        String c = readFile.readNBtye(3);
         System.out.println("c = " + c);
+
 
 
     }
