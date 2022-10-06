@@ -97,6 +97,7 @@ public class MapExercise {
         hashMap.put("박유담","https://github.com/lay423/java-project");
         System.out.println(hashMap.get("전담"));
         System.out.println(hashMap.get("조담호"));
+        System.out.println(hashMap.get("권채이"));
 
     }
 }
