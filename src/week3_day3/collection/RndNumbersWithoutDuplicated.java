@@ -13,7 +13,7 @@ public class RndNumbersWithoutDuplicated {
         for (int i = 0; i < 50; i++) {
             setA.add(randomNumberGenerator.generate(50));
         }
-        System.out.println("set = " + setA);
+        System.out.println(setA);
 
     }
 }
