@@ -40,7 +40,7 @@ public class FileExercise {
         FileExercise fileExercise = new FileExercise();
         char c = fileExercise.readChar("./a_file.txt");
         String s = fileExercise.read2Chars("./a_file.txt");
-        String sN = fileExercise.readNChars("./a_file.txt",3);
+        String sN = fileExercise.readNChars("./a_file.txt",5);
         System.out.println("c = " + c);
         System.out.println("s = " + s);
         System.out.println("sN = " + sN);
