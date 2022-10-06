@@ -18,8 +18,12 @@ public class ReadFile {
                 new FileReader(filename),
                 16 * 1024
         );
-        
-        return (char)br.read();
+
+        String line;
+        while ((line = br.readLine()) != null) {
+            return line.charAt(0);
+        }
+        return ' ';
     }
 
     public static void main(String[] args) throws IOException {
