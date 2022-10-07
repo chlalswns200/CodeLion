@@ -5,7 +5,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PopulationStatistics {
     public void readByChar(String fileName) throws IOException {
@@ -90,15 +92,44 @@ public class PopulationStatistics {
 
     }
 
+    public Map<String, Integer> getMoveCntMap(List<PopulationMove> pml) {
+
+        Map<String,Integer> moveCntMap = new HashMap<>();
+
+        for (PopulationMove pm : pml) {
+            String key = pm.getFromSido() + "," + pm.getToSido();
+            if (moveCntMap.get(key) == null) {
+                moveCntMap.put(key, 1);
+            }
+            moveCntMap.put(key, moveCntMap.get(key) + 1);
+        }
+        return moveCntMap;
+    }
+
     public static void main(String[] args) throws IOException {
 
         //String address = "C:\\Users\\chlal\\Desktop\\인구이동조사\\2021_인구관련연간자료.csv";
         String address = "./from_to.txt";
-        PopulationStatistics populationStatistics = new PopulationStatistics();
-        List<PopulationMove> pml = populationStatistics.readByLine(address);
 
-        for (PopulationMove pm : pml){
-            System.out.printf("전입:%s, 전출:%s \n", pm.getFromSido(), pm.getToSido());
+        PopulationStatistics ps = new PopulationStatistics();
+
+        List<PopulationMove> pml = ps.readByLine(address);
+
+        Map<String, Integer> map = ps.getMoveCntMap(pml);
+
+        String targetFilename = "each_sido_cnt.txt";
+
+        ps.createAFile(targetFilename);
+
+        List<String> cntResult = new ArrayList<>();
+        for (String key : map.keySet()) {
+            String s = String.format("key:%s value:%d\n",key,map.get(key));
+            cntResult.add(s);
         }
+
+        ps.write(cntResult, targetFilename);
+
+
+
     }
 }
