@@ -110,6 +110,8 @@ public class PopulationStatistics {
 
         HashMap<Integer, Integer> seoulToAny = populationStatistics.SeoulToAny(populationMoves);
 
+        System.out.println("seoulToAny = " + seoulToAny);
+
         populationStatistics.findMaxCityAndCount(seoulToAny);
 
         /*
