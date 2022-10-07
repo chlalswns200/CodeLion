@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PopulationStatistics {
 
@@ -50,16 +52,35 @@ public class PopulationStatistics {
         return new PopulationMove(Integer.parseInt(split[0]),Integer.parseInt(split[6]));
     }
 
+    public List<PopulationMove> readAndParse(String filePath) {
+
+        List<PopulationMove> parseData = new ArrayList<>();
+        try (BufferedReader br = Files.newBufferedReader(
+                Paths.get(filePath), StandardCharsets.UTF_8
+        )) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                PopulationMove parse = parse(line);
+                parseData.add(parse);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return parseData;
+    }
+
     public static void main(String[] args) throws IOException {
 
         String filePath = "C:\\Users\\chlal\\Desktop\\인구이동조사\\2021_인구관련연간자료.csv";
         PopulationStatistics populationStatistics = new PopulationStatistics();
         //populationStatistics.readFileByLine(filePath);
 
-        String test = "50,130,54000,2021,07,19,50,130,57000,3,1,061,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,492029";
-        PopulationMove parse = populationStatistics.parse(test);
-        System.out.println("parse.getFromSido() = " + parse.getFromSido());
-        System.out.println("parse.getFromSido() = " + parse.getToSido());
+        List<PopulationMove> populationMoves = populationStatistics.readAndParse(filePath);
+
+        for (PopulationMove populationMove : populationMoves) {
+            System.out.print(populationMove.getFromSido());
+            System.out.println(" " + populationMove.getToSido());
+        }
 
 
     }
