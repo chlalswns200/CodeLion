@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 public class PopulationStatistics {
-    public void readByChar(String fileName) throws IOException {
 
+    public void readByChar(String fileName) throws IOException {
         // 1byte 씩 읽기
         FileReader fileReader = new FileReader(fileName);
         String fileContents ="";
