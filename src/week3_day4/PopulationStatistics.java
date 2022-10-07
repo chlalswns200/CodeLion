@@ -25,7 +25,6 @@ public class PopulationStatistics {
 
     }
 
-    //요즘 스타일
     public void readByLine2(String fileName) {
         try(BufferedReader br = Files.newBufferedReader(
                 Paths.get(fileName), StandardCharsets.UTF_8)){
@@ -38,7 +37,6 @@ public class PopulationStatistics {
         }
     }
 
-    //////////////////////////////////////////////////////////////////
 
     public List<PopulationMove> readByLine(String fileName) throws IOException {
 
@@ -71,7 +69,6 @@ public class PopulationStatistics {
         }
     }
 
-    //List<String>을 지정한 파일에 write
     public void write(List<String> strs, String filename) {
         File file = new File(filename);
 
