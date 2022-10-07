@@ -8,7 +8,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PopulationStatistics {
 
@@ -53,7 +55,6 @@ public class PopulationStatistics {
     }
 
     public List<PopulationMove> readAndParse(String filePath) {
-
         List<PopulationMove> parseData = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(
                 Paths.get(filePath), StandardCharsets.UTF_8
@@ -68,6 +69,36 @@ public class PopulationStatistics {
         }
         return parseData;
     }
+    private HashMap<Integer, Integer> SeoulToAny(List<PopulationMove> populationMoves) {
+        HashMap<Integer,Integer> seoulToAny = new HashMap<>();
+        for (PopulationMove populationMove : populationMoves) {
+            seoulToAny.put(populationMove.getToSido(), 0);
+        }
+        for (PopulationMove populationMove : populationMoves) {
+            if (populationMove.getFromSido() == 11) {
+                seoulToAny.put(populationMove.getToSido(),seoulToAny.get(populationMove.getToSido())+1);
+            }
+        }
+        return seoulToAny;
+    }
+
+    private void findMaxCityAndCount(HashMap<Integer, Integer> seoulToAny) {
+        int maxCnt = 0;
+        int maxCity = 0;
+
+        for (Integer integer : seoulToAny.keySet()) {
+            if (integer > maxCity) {
+                maxCity = integer;
+            }
+        }
+        for (Integer value : seoulToAny.values()) {
+            if (value > maxCity) {
+                maxCnt = value;
+            }
+        }
+        System.out.println("maxCity = " + maxCity);
+        System.out.println("maxCnt = " + maxCnt);
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -77,10 +108,15 @@ public class PopulationStatistics {
 
         List<PopulationMove> populationMoves = populationStatistics.readAndParse(filePath);
 
-        for (PopulationMove populationMove : populationMoves) {
-            System.out.print(populationMove.getFromSido());
-            System.out.println(" " + populationMove.getToSido());
-        }
+        HashMap<Integer, Integer> seoulToAny = populationStatistics.SeoulToAny(populationMoves);
+
+        populationStatistics.findMaxCityAndCount(seoulToAny);
+
+        /*
+        출력
+        maxCity = 50
+        maxCnt = 6024
+         */
 
 
     }
