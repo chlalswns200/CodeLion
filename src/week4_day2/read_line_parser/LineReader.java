@@ -28,6 +28,7 @@ public class LineReader<T> {
         List<T> result = new ArrayList<>();
         if (isRemoveColumnName) {
             br.readLine();
+
         }
         while ((str = br.readLine()) != null) {
             result.add(parser.parse(str));
