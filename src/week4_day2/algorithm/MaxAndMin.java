@@ -46,3 +46,7 @@ public class MaxAndMin {
         System.out.println(minResult);
     }
 }
+
+// 출력
+// 85
+// 3

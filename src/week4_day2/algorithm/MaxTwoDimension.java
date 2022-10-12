@@ -1,12 +1,6 @@
 package week4_day2.algorithm;
 
 public class MaxTwoDimension {
-
-    // arr을 받아서 최대값을 구해서 int로 리턴함
-    /*
-    return : maxValue(최대값), maxIdx(최대값 인덱스)
-     */
-
     public static void main(String[] args) {
 
         int[][] arr = new int[][]{
@@ -20,7 +14,6 @@ public class MaxTwoDimension {
                 {47, 47, 70, 45, 23, 65, 3, 41, 44},
                 {87, 13, 82, 38, 31, 12, 29, 29, 80}
         };
-        MaxTwoDimension maxTwo = new MaxTwoDimension();
 
         //loop를 돌아야 합니다 9*9
         int maxValue = arr[0][0];
