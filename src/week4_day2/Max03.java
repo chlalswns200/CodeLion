@@ -1,6 +1,7 @@
 package week4_day2;
 
 public class Max03 {
+
     public int getMax(int[] arr) {
         int maxValue = 0;
         //loop 구성
@@ -11,6 +12,7 @@ public class Max03 {
         }
         return maxValue;
     }
+
     public static void main(String[] args) {
 
         int[] arr = new int[]{3, 29, 38, 12, 57, 74, 40, 85, 61};
