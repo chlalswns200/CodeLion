@@ -4,11 +4,13 @@ public class BubbleSort01 {
 
     public int[] sort(int[] ar) {
 
-        for (int j = 1; j < ar.length; j++) {
-            if (ar[0] > ar[j]) {
-                int tmp = ar[0];
-                ar[0] = ar[j];
-                ar[j] = tmp;
+        for (int i = 0; i < ar.length-1; i++) {
+            for (int j = i+1; j < ar.length; j++) {
+                if (ar[i] > ar[j]) {
+                    int tmp = ar[i];
+                    ar[i] = ar[j];
+                    ar[j] = tmp;
+                }
             }
         }
 
@@ -18,7 +20,7 @@ public class BubbleSort01 {
     public static void main(String[] args) {
 
         BubbleSort01 br = new BubbleSort01();
-        int[] ar = new int[]{2, 7, 3, 9, 28, 11};
+        int[] ar = new int[]{2, 7, 3, 9, 28, 11,1};
         int[] sorted = br.sort(ar);
 
         for (int i : sorted) {
