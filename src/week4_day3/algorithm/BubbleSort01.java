@@ -4,13 +4,11 @@ public class BubbleSort01 {
 
     public int[] sort(int[] ar) {
 
-        for (int i = 0; i < ar.length; i++) {
-            for (int j = 0; j < ar.length-i-1; j++) {
-                if (ar[j] > ar[j+1]) {
-                    int tmp = ar[j];
-                    ar[j] = ar[j+1];
-                    ar[j+1] = tmp;
-                }
+        for (int j = 1; j < ar.length; j++) {
+            if (ar[0] > ar[j]) {
+                int tmp = ar[0];
+                ar[0] = ar[j];
+                ar[j] = tmp;
             }
         }
 
@@ -29,4 +27,4 @@ public class BubbleSort01 {
     }
 }
 // 출력
-// 2 3 7 9 11 28
+// 2 7 3 9 28 11
