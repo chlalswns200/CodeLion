@@ -3,6 +3,7 @@ package week5_day1;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class ZeroArray {
 
@@ -22,6 +23,26 @@ public class ZeroArray {
 
 
         return answer;
+    }
+
+    public int[] solution2(int[] arr, int divisor) {
+        PriorityQueue<Integer> list = new PriorityQueue<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % divisor == 0) {
+               list.add(arr[i]);
+            }
+        }
+
+        if(list.size()==0) return new int[]{-1};
+
+        int[] answer = new int[list.size()];
+        int idx=0;
+        while (!list.isEmpty()) {
+            answer[idx++] = list.poll();
+        }
+        return answer;
+
     }
     public static void main(String[] args) {
 
